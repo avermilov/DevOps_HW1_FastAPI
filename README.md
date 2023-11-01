@@ -4,6 +4,8 @@
 
 Автор: Ермилов Артемий Васильевич
 
+[Ссылка](https://avermilov-fastapi.onrender.com) на сервис (render.com).
+
 
 ## Задание
 
