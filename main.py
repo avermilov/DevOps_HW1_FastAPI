@@ -45,7 +45,7 @@ def root():
 
 
 @app.post('/post')
-def post_post(timestamp: Timestamp):
+def get_post(timestamp: Timestamp):
     for ts in post_db:
         if ts.id == timestamp.id:
             raise HTTPException(status_code=409, detail=f"Timestamp with id = {timestamp.id} already exists.")
@@ -54,7 +54,7 @@ def post_post(timestamp: Timestamp):
 
 
 @app.get('/dog')
-def get_dog(kind: DogType = None):
+def get_dogs(kind: DogType = None):
     if kind is None:
         return list(dogs_db.values())
 
@@ -63,7 +63,7 @@ def get_dog(kind: DogType = None):
 
 
 @app.post('/dog')
-def post_dog(dog: Dog):
+def create_dog(dog: Dog):
     if dog.pk in dogs_db:
         raise HTTPException(status_code=409, detail=f"Dog with pk = {dog.pk} already exists.")
 
@@ -73,7 +73,7 @@ def post_dog(dog: Dog):
 
 
 @app.get('/dog/{pk}')
-def get_dog_pk(pk: int):
+def get_dog_by_pk(pk: int):
     if pk not in dogs_db:
         raise HTTPException(status_code=404, detail=f"Dog with pk = {pk} not found.")
 
@@ -81,7 +81,7 @@ def get_dog_pk(pk: int):
 
 
 @app.patch('/dog/{pk}')
-def patch_dog_pk(pk: int, dog: Dog):
+def update_dog(pk: int, dog: Dog):
     if pk not in dogs_db:
         raise HTTPException(status_code=404, detail=f"Dog with pk = {pk} not found.")
 
