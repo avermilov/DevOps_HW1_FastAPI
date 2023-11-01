@@ -1,5 +1,4 @@
 from enum import Enum
-from typing import Optional
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -55,7 +54,7 @@ def post_post(timestamp: Timestamp):
 
 
 @app.get('/dog')
-def get_dog(kind: Optional[DogType] = None):
+def get_dog(kind: DogType | None = None):
     if kind is None:
         return list(dogs_db.values())
 
