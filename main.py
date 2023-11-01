@@ -54,7 +54,7 @@ def post_post(timestamp: Timestamp):
 
 
 @app.get('/dog')
-def get_dog(kind: DogType | None = None):
+def get_dog(kind: DogType = None):
     if kind is None:
         return list(dogs_db.values())
 
